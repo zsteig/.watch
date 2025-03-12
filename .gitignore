@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Eclipse/STM32CubeIDE
+.metadata
+.settings
+[Rr]elease
+[Dd]ebug
+.launch
