@@ -424,3 +424,13 @@ void SSD1331_ClearVCC()
 {
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7, GPIO_PIN_RESET);
 }
+
+void SSD1331_LoadSwitchEnable()
+{
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+}
+
+void SSD1331_LoadSwitchDisable()
+{
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+}

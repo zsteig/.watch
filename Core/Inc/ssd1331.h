@@ -137,5 +137,7 @@ void SSD1331_SetRST(void);
 void SSD1331_ClearRST(void);
 void SSD1331_SetVCC(void);
 void SSD1331_ClearVCC(void);
+void SSD1331_LoadSwitchEnable(void);
+void SSD1331_LoadSwitchDisable(void);
 
 #endif /* INC_SSD1331_H_ */

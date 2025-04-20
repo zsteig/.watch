@@ -120,6 +120,7 @@ void Enter_Shutdown()
 	OLED_SendCommand(SSD1331_0xAE_Display_Off_Sleep);
 	SSD1331_ClearVCC();
 	HAL_Delay(100);
+	SSD1331_LoadSwitchDisable();
 	HAL_PWREx_EnterSHUTDOWNMode();
 }
 
@@ -403,77 +404,8 @@ int main(void)
   globalTime.date = Startup_Validation(RV2123_GetDate(), MIN_DATE, MAX_DATE, 1);
   globalTime.month = Startup_Validation(RV2123_GetMonth(), MIN_MONTH, MAX_MONTH, 0);
 
-//  uint8_t currVal = 0;
-//
-//  // Validate hour
-//  currVal = RV2123_GetHour();
-////  char buffer[50];
-////  sprintf(buffer, "hour: %02d\r\n", currVal);
-////  HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), 1000);
-//  if (currVal >= 0 && currVal <= 23)
-//  {
-////	  sprintf(buffer, "Waking up\r\n");
-//	  globalTime.hour = currVal;
-//  }
-//  else
-//  {
-////	  sprintf(buffer, "Fresh start\r\n");
-//	  RV2123_SetHour(0);
-//  }
-////  HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), 1000);
-//
-//  // Validate minute
-//  currVal = RV2123_GetMinute();
-//  if (currVal >= 0 && currVal <= 59)
-//  {
-//	  globalTime.minute = currVal;
-//  }
-//  else
-//  {
-//	  RV2123_SetMinute(0);
-//  }
-//
-//  // Validate seconds
-//  currVal = RV2123_GetSecond();
-//  if (currVal < 0 && currVal > 59)
-//  {
-//	  RV2123_SetSecond(0);
-//  }
-//
-//  // Validate DOW
-//  currVal = RV2123_GetDayOfWeek();
-//  if (currVal >= 0 && currVal <= 6)
-//  {
-//	  globalTime.dow = currVal;
-//  }
-//  else
-//  {
-//	  RV2123_SetDayOfWeek(0);
-//  }
-//
-//  // Validate Date
-//  currVal = RV2123_GetDate();
-//  if (currVal >= 1 && currVal <= 31)
-//  {
-//	  globalTime.date = currVal;
-//  }
-//  else
-//  {
-//	  RV2123_SetDate(1);
-//  }
-//
-//  // Validate Month
-//  currVal = (RV2123_GetMonth() - 1);
-//  if (currVal >= 0 && currVal <= 11)
-//  {
-//	  globalTime.month = currVal;
-//  }
-//  else
-//  {
-//	  RV2123_SetMonth(1);
-//  }
-
   // OLED Initialization
+  SSD1331_LoadSwitchEnable();
   SSD1331_ClearVCC();
   SSD1331_ClearRST();
   SSD1331_ClearDC();
@@ -495,19 +427,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  if (HAL_GPIO_ReadPin(WAKE_BTN_GPIO_Port, WAKE_BTN_Pin) == GPIO_PIN_SET)
-//	  {
-//		  drawEnd();
-//	  }
-//
-//	  if (HAL_GPIO_ReadPin(SET_BTN_GPIO_Port, SET_BTN_Pin) == GPIO_PIN_SET)
-//	  {
-//		  char buffer[50];
-//		  sprintf(buffer, "> %02d:%02d:%02d\r\n", RV2123_GetHour(), RV2123_GetMinute(), RV2123_GetSecond());
-//		  HAL_UART_Transmit(&huart2, (uint8_t*)buffer, strlen(buffer), 1000);
-//		  HAL_Delay(1000);
-////		  HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_HIGH);
-//	  }
 
 	  //Regular Run Loop
 	  drawPrompt(LINE1_Y);
@@ -771,8 +690,8 @@ static void MX_USART2_UART_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
@@ -836,8 +755,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
