@@ -57,6 +57,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define SET_BTN_Pin GPIO_PIN_14
+#define SET_BTN_GPIO_Port GPIOC
 #define WAKE_BTN_Pin GPIO_PIN_0
 #define WAKE_BTN_GPIO_Port GPIOA
 #define OLED_SPI_SCK_Pin GPIO_PIN_1
@@ -71,8 +73,6 @@ void Error_Handler(void);
 #define OLED_VCC_EN_GPIO_Port GPIOA
 #define OLED_PWR_EN_Pin GPIO_PIN_0
 #define OLED_PWR_EN_GPIO_Port GPIOB
-#define SET_BTN_Pin GPIO_PIN_9
-#define SET_BTN_GPIO_Port GPIOA
 #define OLED_SPI_MOSI_Pin GPIO_PIN_12
 #define OLED_SPI_MOSI_GPIO_Port GPIOA
 #define RTC_SPI_SCK_Pin GPIO_PIN_3
@@ -83,8 +83,6 @@ void Error_Handler(void);
 #define RTC_SPI_MOSI_GPIO_Port GPIOB
 #define RTC_SPI_CS_Pin GPIO_PIN_6
 #define RTC_SPI_CS_GPIO_Port GPIOB
-#define OLD_SET_BTN_Pin GPIO_PIN_7
-#define OLD_SET_BTN_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 typedef struct
