@@ -75,11 +75,11 @@
 #define LINE6_Y 80
 
 // Underline X coordinates
-#define HOUR_UNDERLINE 		12
-#define MINUTE_UNDERLINE	30
-#define DOW_UNDERLINE		12
-#define DATE_UNDERLINE		12
-#define MONTH_UNDERLINE		30
+#define HOUR_UNDERLINE 		18
+#define MINUTE_UNDERLINE	36
+#define DOW_UNDERLINE		18
+#define DATE_UNDERLINE		18
+#define MONTH_UNDERLINE		36
 
 // Strings for time display
 	extern char* promptStr;

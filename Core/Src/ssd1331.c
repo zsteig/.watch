@@ -17,11 +17,11 @@ extern SPI_HandleTypeDef hspi1;
 	static uint8_t cursorY = 0;
 
 // Strings for time display
-	char* promptStr = "root~$ ";
+	char* promptStr = " #:~$ ";
 	char* timeStr = "./t";
 	char* endStr = "end";
 	char* setStr = "set";
-	char* cancelStr = "^C";
+	char* cancelStr = " ^C";
 
 // Arrays for value printing
 	char timeLine[20];
@@ -271,8 +271,8 @@ void drawPrompt(int y)
 {
 	setCursorX(0);
 	setCursorY(y);
-//	SSD1331_Print(promptStr, 0, 255, 0); 	// Green
-	SSD1331_Print(promptStr, 165, 0, 115); 	// Purple
+	SSD1331_Print(promptStr, 20, 255, 20); 	// Green
+//	SSD1331_Print(promptStr, 165, 0, 115); 	// Purple
 }
 
 void drawStart()
@@ -294,7 +294,7 @@ void drawStart()
 
 void drawTime(uint8_t hour, uint8_t minute)
 {
-	sprintf(timeLine, "> %02d:%02d", hour, minute);
+	sprintf(timeLine, " > %02d:%02d", hour, minute);
 
 	setCursorX(0);
 	setCursorY(LINE2_Y);
@@ -310,7 +310,7 @@ void drawTime(uint8_t hour, uint8_t minute)
 
 void drawDOW(char* dow)
 {
-	sprintf(dayLine, "> %s", dow);
+	sprintf(dayLine, " > %s", dow);
 
 	setCursorX(0);
 	setCursorY(LINE3_Y);
@@ -326,7 +326,7 @@ void drawDOW(char* dow)
 
 void drawDate(uint8_t date, char* month)
 {
-	sprintf(monthLine, "> %02d %s", date, month);
+	sprintf(monthLine, " > %02d %s", date, month);
 
 	setCursorX(0);
 	setCursorY(LINE4_Y);
@@ -342,7 +342,7 @@ void drawDate(uint8_t date, char* month)
 
 void drawEnd()
 {
-	setCursorX(45);
+	setCursorX(36);
 	setCursorY(LINE5_Y);
 
 	for (int8_t i = 0; endStr[i] != '\0'; i++)
@@ -357,7 +357,7 @@ void drawEnd()
 
 void drawSet()
 {
-	setCursorX(45);
+	setCursorX(36);
 	setCursorY(LINE5_Y);
 
 	for (int8_t i = 0; setStr[i] != '\0'; i++)

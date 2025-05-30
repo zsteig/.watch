@@ -89,6 +89,7 @@ void Toggle_PA0_Function(bool wakeup)
 {
 	if (wakeup)
 	{
+		__HAL_PWR_CLEAR_FLAG(PWR_FLAG_WUF1);
 		__HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);
 		HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_HIGH);
 		GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -110,14 +111,16 @@ void Toggle_PA0_Function(bool wakeup)
 
 void Enter_Shutdown()
 {
-	// Enable WKUP1 Pin
-	Toggle_PA0_Function(1);
-
 	// OLED shutdown
 	OLED_SendCommand(SSD1331_0xAE_Display_Off_Sleep);
 	SSD1331_ClearVCC();
 	HAL_Delay(100);
 	SSD1331_LoadSwitchDisable();
+
+	// Enable WKUP1 Pin
+	Toggle_PA0_Function(1);
+
+	// Enter Shutdown Mode
 	HAL_PWREx_EnterSHUTDOWNMode();
 }
 
