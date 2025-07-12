@@ -67,12 +67,12 @@
 #define SSD1331_0x16_Param_Lock             (0x16)
 
 // Y coordinates for each line
-#define LINE1_Y 0
-#define LINE2_Y 16
-#define LINE3_Y 32
-#define LINE4_Y 48
-#define LINE5_Y 64
-#define LINE6_Y 80
+#define LINE1_Y 4
+#define LINE2_Y 20
+#define LINE3_Y 36
+#define LINE4_Y 52
+#define LINE5_Y 68
+#define LINE6_Y 84
 
 // Underline X coordinates
 #define HOUR_UNDERLINE 		18
